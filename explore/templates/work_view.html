@@ -1,0 +1,18 @@
+{% extends 'base.html' %} 
+{% block title %}Work - {{work.display_name}}{%endblock %} 
+
+{% block content %}
+<h1 class="mt-4">{{ work.display_name }}</h1>
+<a href="{{ work.doi }}" target="_blank" class="btn btn-outline-primary"><i class="bi bi-link-45deg"></i> DOI</a>
+<a href="https://openalex.org/works?sidebar={{ work.id }}" target="_blank" class="btn btn-outline-primary"><i class="bi bi-link-45deg"></i> OpenAlex</a>
+
+<p align="justify" class="mt-2">{{ work.abstract }}</p>
+<h2>Extracted Concepts</h2>
+<div class="list-group mt-3">
+  {% for concept in work.llama_concepts.all %}
+  <a class="list-group-item list-group-item-action" href="{% url 'concept-view' concept.name %}"><i class="bi bi-search"></i> {{ concept.name }}</a>
+  {% empty %}
+  <p class="list-group-item">No concepts found for this work.</p>
+  {% endfor %}
+</div>
+{% endblock %}

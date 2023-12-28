@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}My Django Site{% endblock %}</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.css">
+
+
+    <!-- Optional: Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}" />
+
+    {% block extra_head %}{% endblock %}
+  </head>
+  <body>
+    <header>
+      <!-- Navbar or Header content goes here -->
+    </header>
+
+    <main role="main" class="container">
+      {% block content %}
+      <!-- Main content will be overridden in child templates -->
+      {% endblock %}
+    </main>
+
+    <footer>
+      <!-- Footer content goes here -->
+    </footer>
+
+    <!-- Optional: Bootstrap Bundle with Popper (JavaScript) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
+    {% block extra_scripts %}{% endblock %}
+  </body>
+</html>

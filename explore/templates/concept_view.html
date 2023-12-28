@@ -1,0 +1,20 @@
+{% extends 'base.html' %} 
+{% block title %}Concepts - {{ concept }}{% endblock %} 
+
+{% block content %}
+<h2 class="mt-4">Found {{works|length}} works related to the concept: '{{ concept }}'</h2>
+<div class="list-group">
+  {% for work in works %}
+  <a
+    href="{% url 'work-view' work.id %}"
+    class="list-group-item list-group-item-action"
+  >
+    <i class="bi bi-file-text"></i>
+    <!-- Replace with actual icon path -->
+    {{ work.display_name }} - {{ work.publication_date }}
+  </a>
+  {% empty %}
+  <p>No works found for this concept.</p>
+  {% endfor %}
+</div>
+{% endblock %}
